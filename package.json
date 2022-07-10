@@ -1,0 +1,25 @@
+{
+  "name": "cypress-tutorial",
+  "version": "1.0.0",
+  "description": "Cypress Tutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tuanquynh0508/cypress-tutorial.git"
+  },
+  "keywords": [
+    "cypress"
+  ],
+  "author": "Nguyen Nhu Tuan <tuanquynh0508@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tuanquynh0508/cypress-tutorial/issues"
+  },
+  "homepage": "https://github.com/tuanquynh0508/cypress-tutorial#readme",
+  "dependencies": {
+    "cypress": "^10.3.0"
+  }
+}

@@ -24,6 +24,10 @@ const typePassword = () => {
 
 const typeFullname = () => {
     cy.get(webElements.fullnameElement)
+    .invoke('attr', 'placeholder')
+    .should('contain', 'Enter your name');
+
+    cy.get(webElements.fullnameElement)
     .type('Nguyen Nhu Tuan')
     .should('have.value', 'Nguyen Nhu Tuan');
 }
@@ -40,6 +44,30 @@ const checkDemoCheckbox = () => {
     .should('be.checked');
 }
 
+const pressbtnPopoverToggle = () => {
+    // cy.wait(9000);
+    // Alias the URL /command/actions of api to alias name is exampleCallApi
+    cy.intercept('GET', '/command/actions').as('exampleCallApi');
+    cy.get(webElements.btnPopoverToggle).invoke('click');
+    // Wait for api call done
+    cy.wait('@exampleCallApi');
+}
+
+const gotoUtilities = () => {
+    // cy.contains('Utilities').click();
+    cy.get('[href="/utilities"]').click();
+}
+
+const verifyElementOnUtilities = () => {
+    // cy.intercept('GET', 'https://example.cypress.io/utilities').as('loadPageUtilities');
+    cy.get('h1').should('contain', 'Utilities');
+    // cy.wait('@loadPageUtilities');
+}
+
+const scrollToLastElementOnPage = () => {
+    cy.get('[id="Promise"]').find('a').scrollIntoView().click();
+}
+
 export default {
     visitSiteDemoAction,
     typeEmail,
@@ -48,4 +76,8 @@ export default {
     typeFullname,
     typeDescription,
     checkDemoCheckbox,
+    pressbtnPopoverToggle,
+    gotoUtilities,
+    verifyElementOnUtilities,
+    scrollToLastElementOnPage,
 };

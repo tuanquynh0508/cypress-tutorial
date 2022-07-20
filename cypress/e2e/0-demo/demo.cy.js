@@ -25,9 +25,13 @@ describe('Demo spec', () => {
 
     // Days 4
     // Verify link menu
-    helpers.gotoUtilities();
-    helpers.verifyElementOnUtilities();
-    helpers.scrollToLastElementOnPage();
+    // helpers.gotoUtilities();
+    // helpers.verifyElementOnUtilities();
+    // helpers.scrollToLastElementOnPage();
+
+    // Homework Day 4
+    // Verify Multi SelectBox
+    helpers.verifyMultiSelectBox();
   });
 
 });

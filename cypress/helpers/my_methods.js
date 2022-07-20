@@ -68,6 +68,36 @@ const scrollToLastElementOnPage = () => {
     cy.get('[id="Promise"]').find('a').scrollIntoView().click();
 }
 
+const verifyMultiSelectBox = () => {
+    const multiSelectBoxSelector = webElements.multiSelectBoxElement;
+    const singleSelectBoxSelector = webElements.singleSelectBoxElement;
+
+    // For Single
+    cy.get(singleSelectBoxSelector).scrollIntoView();
+    cy.get(singleSelectBoxSelector)
+        .select('apples');
+    cy.get(singleSelectBoxSelector)
+        .should('have.value', 'fr-apples');
+
+    // For Multi
+    cy.get(multiSelectBoxSelector).scrollIntoView();
+    cy.get(multiSelectBoxSelector)
+        .find('option')
+        .first()
+        .invoke('attr', 'selected', true);
+    cy.get(multiSelectBoxSelector)
+        .invoke('val')
+        .should('deep.equal', ['fr-apples']);
+
+    cy.get(multiSelectBoxSelector)
+        .find('option')
+        .last()
+        .invoke('attr', 'selected', true);
+    cy.get(multiSelectBoxSelector)
+        .invoke('val')
+        .should('deep.equal', ['fr-apples', 'fr-bananas']);
+}
+
 export default {
     visitSiteDemoAction,
     typeEmail,
@@ -80,4 +110,5 @@ export default {
     gotoUtilities,
     verifyElementOnUtilities,
     scrollToLastElementOnPage,
+    verifyMultiSelectBox,
 };
